@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 export const App: React.FC = () => {
-  const [lastPressedKey, setLastPressedKey]
-    = useState('Nothing was pressed yet');
+  const [lastPressedKey, setLastPressedKey] = useState(
+    'Nothing was pressed yet',
+  );
 
   useEffect(() => {
     const handleKeyUp = (event: KeyboardEvent) => {
@@ -14,14 +15,11 @@ export const App: React.FC = () => {
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-  });
+  }, []);
 
   return (
     <div className="App">
-      <p
-        className="App__message">
-        {lastPressedKey}
-      </p>
+      <p className="App__message">{lastPressedKey}</p>
     </div>
   );
-}
+};
